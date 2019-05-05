@@ -1,5 +1,5 @@
 # See: man pkg-config
-prefix=/usr/local
+prefix=/usr/local/python
 exec_prefix=${prefix}
 libdir=${exec_prefix}/lib
 includedir=${prefix}/include

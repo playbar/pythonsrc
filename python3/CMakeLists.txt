@@ -8,6 +8,10 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++14 -fexceptions -Wno-unused-resu
 add_definitions(-DHAVE_STD_ATOMIC)
 add_definitions(-DPy_BUILD_CORE)
 
+set(py_modules_src
+        Modules/main.c
+        )
+
 set(py_objects_src
         Objects/abstract.c
         Objects/accu.c
@@ -67,9 +71,6 @@ set(py_parser_src
         Parser/tokenizer.c
         )
 
-set(py_modules_src
-        Modules/main.c
-        )
 
 add_library( pythonlib STATIC
         ${py_modules_src}

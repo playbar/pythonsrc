@@ -128,7 +128,7 @@ MULTIARCH=	darwin
 MULTIARCH_CPPFLAGS = -DMULTIARCH=\"darwin\"
 
 # Install prefix for architecture-independent files
-prefix=		/usr/local
+prefix=		/usr/local/python
 
 # Install prefix for architecture-dependent files
 exec_prefix=	${prefix}
@@ -202,7 +202,7 @@ EXEMODE=	755
 FILEMODE=	644
 
 # configure script arguments
-CONFIG_ARGS=	
+CONFIG_ARGS=	 '--prefix=/usr/local/python'
 
 
 # Subdirectories with code
