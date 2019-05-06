@@ -37,8 +37,8 @@ const char *_PyImport_DynLoadFiletab[] = {
 #ifdef __CYGWIN__
     ".dll",
 #else  /* !__CYGWIN__ */
-    "." SOABI ".so",
-    ".abi" PYTHON_ABI_STRING ".so",
+    ".cpython-37m-darwin.so",
+    ".abi3.so",
     ".so",
 #endif  /* __CYGWIN__ */
     NULL,

@@ -1,9 +1,13 @@
 cmake_minimum_required(VERSION 3.4.1)
-project(python3 LANGUAGES C)
+project(python3 LANGUAGES CXX C)
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++14 -fexceptions -Wno-unused-result -Wsign-compare \
- -DNDEBUG -g -fwrapv -O3 -Wall -Wextra -Wno-unused-result -Wno-unused-parameter
-  -Wno-missing-field-initializers -Werror=implicit-function-declaration ")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall \
+   -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers \
+   -Werror=implicit-function-declaration ")
+
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall \
+    -std=c99 -Wextra -Wno-unused-result -Wno-unused-parameter -Wno-missing-field-initializers  \
+    -Werror=implicit-function-declaration")
 
 add_definitions(-DHAVE_STD_ATOMIC)
 add_definitions(-DPy_BUILD_CORE)
@@ -70,12 +74,70 @@ set(py_parser_src
         Parser/pgen.c
         Parser/tokenizer.c
         )
+set(py_python_src
+        Python/_warnings.c
+        Python/asdl.c
+        Python/ast.c
+        Python/ast_opt.c
+        Python/ast_unparse.c
+        Python/bltinmodule.c
+        Python/bootstrap_hash.c
+        Python/ceval.c
+        Python/codecs.c
+        Python/compile.c
+        Python/context.c
+        Python/dtoa.c
+        Python/dup2.c
+        Python/dynamic_annotations.c
+        Python/dynload_shlib.c
+        Python/errors.c
+        Python/fileutils.c
+        Python/formatter_unicode.c
+        Python/frozen.c
+        Python/frozenmain.c
+        Python/future.c
+        Python/getargs.c
+        Python/getcompiler.c
+        Python/getcopyright.c
+        Python/getopt.c
+        Python/getplatform.c
+        Python/getversion.c
+        Python/graminit.c
+        Python/hamt.c
+        Python/import.c
+        Python/importdl.c
+        Python/marshal.c
+        Python/modsupport.c
+        Python/mysnprintf.c
+        Python/mystrtoul.c
+        Python/pathconfig.c
+        Python/peephole.c
+        Python/pyarena.c
+        Python/pyctype.c
+        Python/pyfpe.c
+        Python/pyhash.c
+        Python/pylifecycle.c
+        Python/pymath.c
+        Python/pystate.c
+        Python/pystrcmp.c
+        Python/pystrhex.c
+        Python/pystrtod.c
+        Python/Python-ast.c
+        Python/pythonrun.c
+        Python/pytime.c
+        Python/structmember.c
+        Python/symtable.c
+        Python/sysmodule.c
+        Python/thread.c
+        Python/traceback.c
+        )
 
 
 add_library( pythonlib STATIC
         ${py_modules_src}
         ${py_objects_src}
         ${py_parser_src}
+        ${py_python_src}
        )
 
 target_include_directories(pythonlib PRIVATE
